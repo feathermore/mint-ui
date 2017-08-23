@@ -2,7 +2,7 @@
   <div class="page-range">
     <h1 class="page-title">Range</h1>
     <p class="page-range-header">基本功能</p>
-    <mt-cell v-for="item in cells1" :title="item.title" :label="'value:' + item.value">
+    <mt-cell v-for="(item, index) in cells1" :key="index" :title="item.title" :label="'value:' + item.value">
       <mt-range v-model="item.value">
         <div slot="start" v-if="item.start">{{ item.start }}</div>
         <div slot="end" v-if="item.end">{{ item.end }}</div>

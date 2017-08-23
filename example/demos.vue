@@ -1,6 +1,6 @@
 <template>
   <section class="page-demo">
-    <div v-for="group in navs">
+    <div v-for="(group, index) in navs" :key="index">
       <div class="page-title" v-text="group.title"></div>
       <mt-cell
         v-for="item in group.list"

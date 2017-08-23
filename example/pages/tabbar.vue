@@ -8,17 +8,17 @@
 
       <mt-tab-container class="page-tabbar-container" v-model="selected">
         <mt-tab-container-item id="外卖">
-          <mt-cell v-for="n in 10" :title="'餐厅 ' + n" />
+          <mt-cell v-for="(n, index) in 10" :title="'餐厅 ' + n" :key="index"/>
         </mt-tab-container-item>
         <mt-tab-container-item id="订单">
-          <mt-cell v-for="n in 5" :title="'订单 ' + n" />
+          <mt-cell v-for="(n, index) in 5" :title="'订单 ' + n" :key="index"/>
         </mt-tab-container-item>
         <mt-tab-container-item id="发现">
-          <mt-cell v-for="n in 7" :title="'发现 ' + n" />
+          <mt-cell v-for="(n, index) in 7" :title="'发现 ' + n" :key="index"/>
         </mt-tab-container-item>
         <mt-tab-container-item id="我的">
           <div class="page-part">
-            <mt-cell v-for="n in 12" :title="'我的 ' + n" />
+            <mt-cell v-for="(n, index) in 12" :title="'我的 ' + n" :key="index"/>
           </div>
           <router-link to="/">
             <mt-button type="danger" size="large">退出</mt-button>

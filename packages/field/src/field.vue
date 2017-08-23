@@ -92,6 +92,7 @@ export default {
       type: String,
       default: 'text'
     },
+    limit: Number,
     rows: String,
     label: String,
     placeholder: String,
@@ -114,7 +115,11 @@ export default {
     },
 
     handleInput(evt) {
-      this.currentValue = evt.target.value;
+      if (this.type === 'number' && this.limit) {
+        this.currentValue = Number(evt.target.value).toFixed(this.limit);
+      } else {
+        this.currentValue = evt.target.value;
+      }
     },
 
     handleClear() {
@@ -125,7 +130,11 @@ export default {
 
   watch: {
     value(val) {
-      this.currentValue = val;
+      if (this.type === 'number' && this.limit) {
+        this.currentValue = Number(val).toFixed(this.limit);
+      } else {
+        this.currentValue = val;
+      }
     },
 
     currentValue(val) {
