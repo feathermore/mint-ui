@@ -50,6 +50,7 @@
 <script>
 import XCell from 'mint-ui/packages/cell/index.js';
 import Clickoutside from 'mint-ui/src/utils/clickoutside';
+import round10 from 'mint-ui/src/utils/decimalAdjust';
 if (process.env.NODE_ENV === 'component') {
   require('mint-ui/packages/cell/style.css');
 }
@@ -116,7 +117,7 @@ export default {
 
     handleInput(evt) {
       if (this.type === 'number' && this.limit) {
-        this.currentValue = Number(evt.target.value).toFixed(this.limit);
+        this.currentValue = round10(evt.target.value, -this.limit);
       } else {
         this.currentValue = evt.target.value;
       }
@@ -131,7 +132,7 @@ export default {
   watch: {
     value(val) {
       if (this.type === 'number' && this.limit) {
-        this.currentValue = Number(val).toFixed(this.limit);
+        this.currentValue = round10(val, -this.limit);
       } else {
         this.currentValue = val;
       }
