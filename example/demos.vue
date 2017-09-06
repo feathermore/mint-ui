@@ -3,8 +3,9 @@
     <div v-for="(group, index) in navs" :key="index">
       <div class="page-title" v-text="group.title"></div>
       <mt-cell
-        v-for="item in group.list"
+        v-for="(item, index) in group.list"
         :to="item.path"
+        :key="index"
         is-link>
         <div slot="title">
           <i :class="['indexicon', 'icon-' + item.icon]"></i>

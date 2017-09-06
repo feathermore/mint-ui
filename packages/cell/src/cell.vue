@@ -18,6 +18,9 @@
         <slot>
           <span v-text="value"></span>
         </slot>
+        <span class="mint-field-state" v-if="state" :class="['is-' + state]">
+          <i class="mintui" :class="['mintui-field-' + state]"></i>
+        </span>
       </div>
     </div>
     <div class="mint-cell-right">
@@ -61,6 +64,10 @@ export default {
     title: String,
     label: String,
     isLink: Boolean,
+    state: {
+      type: String,
+      default: 'default'
+    },
     value: {}
   },
 
@@ -188,6 +195,31 @@ export default {
         right: 0;
         top: 0;
         transform: translate3d(100%, 0, 0);
+      }
+
+      @descendent state {
+        color: inherit;
+        margin-left: 20px;
+
+        .mintui {
+          font-size: 20px;
+        }
+
+        @when error {
+          color: $error-color;
+        }
+
+        @when warning {
+          color: $warning-color;
+        }
+
+        @when success {
+          color: $success-color;
+        }
+
+        @when default {
+          margin-left: 0;
+        }
       }
 
       @descendent allow-right::after {
